@@ -1,0 +1,35 @@
+     trisurf(Sol.elem, Sol.node(:,1), Sol.node(:,2), Sol.p, ...
+         'FaceColor', 'interp', 'EdgeColor', 'interp');
+     view(0,90), axis equal, axis on;
+    colormap('jet');
+      colorbar; 
+
+     trisurf(Sol.elem, Sol.node(:,1), Sol.node(:,2), Sol.vapFrac, ...
+         'FaceColor', 'interp', 'EdgeColor', 'interp');
+     view(0,90), axis equal, axis on;
+    colormap('jet');
+      colorbar; 
+
+     trisurf(Sol.elem, Sol.node(:,1), Sol.node(:,2), Sol.u(:, 1), ...
+         'FaceColor', 'interp', 'EdgeColor', 'interp');
+     view(0,90), axis equal, axis on;
+    colormap('jet');
+      colorbar; 
+
+     trisurf(Sol.elem, Sol.node(:,1), Sol.node(:,2), Sol.u(:, 2), ...
+         'FaceColor', 'interp', 'EdgeColor', 'interp');
+     view(0,90), axis equal, axis on;
+    colormap('jet');
+      colorbar; 
+
+     trisurf(Sol.elem, Sol.node(:,1), Sol.node(:,2), fluid.dens, ...
+         'FaceColor', 'interp', 'EdgeColor', 'interp');
+     view(0,90), axis equal, axis on;
+    colormap('jet');
+      colorbar; 
+
+     trisurf(Sol.elem, Sol.node(:,1), Sol.node(:,2), sqrt(Sol.u(:, 1).*Sol.u(:, 1) + Sol.u(:, 2).*Sol.u(:, 2)), ...
+         'FaceColor', 'interp', 'EdgeColor', 'interp');
+     view(0,90), axis equal, axis on;
+    colormap('jet');
+      colorbar; 
