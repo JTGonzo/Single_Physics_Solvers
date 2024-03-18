@@ -1,2 +1,2 @@
 # Single_Physics_Solvers
-Stand alone single domain physics solvers
+Stand alone single domain 2D and 3D physics solvers 
