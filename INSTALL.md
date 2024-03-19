@@ -32,12 +32,12 @@ OR
 
 >> main_CSM
 
-as determined by the solver type. Doing this begins the example simulation and creates a "Figures" folder where the simulation configuration is output to periodically as a series of *.vtk files. IN the casse of the CFD solver a "Results" folder is also created where the resultant aerodynamic forces integrated over the defined FSI interface is output after each time step. 
+as determined by the solver type. Doing this begins the example simulation and creates a "Figures" folder where the simulation configuration is output periodically as a series of *.vtk files. In the casse of the CFD solver a "Results" folder is also created where the resultant aerodynamic forces (integrated over the defined FSI interface) are print to a file contained therein after each time step. 
 
 Running your own Simulation
 ------------------
 <ins>***Mesh and .MAT file generation***</ins><br>
-See this brief tutorial on how to set up the **.mat** files needed to perform your own simulations. These .mat files define the geometric/spatial properties of the problem you intend to investigate. Pay special attention on how to define and identify the boundary and interface surfaces. 
+See this brief tutorial on how to set up the **.mat** files needed to perform your own simulations. These .mat files define the geometric/spatial properties of the problem you intend to investigate. Pay special attention to how you define and identify the boundary and interface surfaces. 
 
 <ins>***Editting main_CFD.m or main_CSM.m ***</ins><br>
 The only adjustments that are needed in this file to run your own simulations are 
@@ -46,7 +46,7 @@ The only adjustments that are needed in this file to run your own simulations ar
 
 *line 15 :* vtk_filename = 'Figures/Flap_';
 
-These lines are where you indicate the names you chose for the domain specific .mat files that you will be importing to the solver as well as the prefix string that you intend to assigned to your output data.  
+These lines are where you indicate the names you chose for the domain specific .mat files that you will be importing into the solver as well as the prefix string that you assign to your output data.  
 
 <ins>***Editting CFD_data.m or CSM_data.m***</ins><br>
 These two files are the primary locations where you define all the domain specific parameters needed for you unqiue problem. Parameters that you are able to set include: 
