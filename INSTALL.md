@@ -39,7 +39,7 @@ Running your own Simulation
 <ins>***Mesh and .MAT file generation***</ins><br>
 See this brief tutorial on how to set up the **.mat** files needed to perform your own simulations. These .mat files define the geometric/spatial properties of the problem you intend to investigate. Pay special attention to how you define and identify the boundary and interface surfaces. 
 
-<ins>***Editting main_CFD.m or main_CSM.m ***</ins><br>
+<ins>***Editting main_CFD.m or main_CSM.m***</ins><br>
 The only adjustments that are needed in this file to run your own simulations are 
 
 *line 8 :* load('beam.mat')
