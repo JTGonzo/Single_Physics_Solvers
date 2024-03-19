@@ -1,43 +1,40 @@
 # DISCLAIMER!!
 These codes were very recently uploaded (March 20th, 2024) from my system and have yet to be vetted for general distribution/use. I am currently working through commenting, cleaning and re-testing these solver which were put together approximately 2 years ago. Please allow me the next few weeks to clean up the codes so as to make them more instructive, easy to use, and bug-free. 
 
-`While this disclaimer is being displayed` **I suggest the user refrain from using the CFEI solvers** and exercise *some* caution when using the deconstructed **redbkit** solvers provided.
+`While this disclaimer is being displayed` **I strongly suggest the user refrain from using the 3D compressible flow solver** and exercise *some* caution when using the deconstructed **redbkit** solvers provided.
 
-# Monolithic_FSI
-This repository contains three 2D and 3D high-fidelity computational fluid-structure interaction solvers built (mainly) in MATLAB. They are primarily focused on solving two-fields problems monolithically, where the incompressible Navier-Stokes equations - written in the Arbitrary Lagrangian Eulerian (ALE) form - are coupled with the nonlinear elastodynamics structural equations. The numerical strategies employed in the above tools fall into the following three catagoriess: 
+# CSM and CFD solver detailes
+This repository contains two 2D and 3D high-fidelity computational fluid dyynamics (CFD) and computational structural mechanics solvers built (mainly) in MATLAB. Each solver irrespective of the domain is developed using a Galerkin least-squares finite element (FE) strategy. 
 
-1. Fully Implicit Nonlinear FSI 
-2. Semi-Implicit Geometry–Convective Explicit (GCE) 
-3. Semi-Implicit Combined Field with Explicit Interface (CFEI)
+<ins>***3D Compressible Navier-Stokes Solver***</ins><br>
+This positivity preserving variational Galerkin finite element scheme was developed at the [University of British Columbia](https://cml.mech.ubc.ca/) by the graduate students of my superviosor [Dr. Rajeev Jaiman](https://scholar.google.com/citations?user=iofAU68AAAAJ&hl=en&oi=ao). In this finite element solver an incompressible 3D Navier-Stokes solver is coupled in a partitioned manner to a homogenous mixture-based finite mass tranfer model that captures the cavitation physics. In addition, this cavitating flow solver is next coupled to a hybrid URANS-LES turbulence mode and temporal discretization is performed via a fully-implicit generalized-&alpha; time integration scheme. 
 
-they are each of the Galerkin least-squares finite element (FE) variety and are based on the Arbitrary Lagrangian–Eulerian (ALE) methodology for solving FSI problems. 
+Further reading on this technique can be found in 
+>[**[RKJ21] S. Kashyap and R. Jaiman. A robust and accurate finite element framework for cavitating flows with moving fluid-structure interfaces **, Computers and Mathematics with Applications, 2021.](https://doi.org/10.1016/j.camwa.2021.10.024)
+
+
+<ins>***redbKIT Solver***</ins><br>
+The redbKIT-based CFD and CSM solvers given are bare-bones deconstructions (/simplification) of the original [toolkit](https://github.com/redbKIT/redbKIT). At face value they are exclusively the intellectual property of the original repository with a few original lines of functional code included for initialization, data output, and operational purposes. 
+
+In the above solvers specifically (as opposed to the original toolkit), we exclusively use higher-order P<sub>2</sub> finite elements for the structural equations and stable Taylor-Hood P<sub>2</sub>/P<sub>1</sub> mixed finite elements for the fluid equations. A second-order backward difference scheme is adopted for temporal discretization in the CFD solvers whilst the generalized-&alpha; method is used for the CSM solvers. For the structural mechanics solvers (2D & 3D) the user is free to choose any one of three constitutive material models; they are: 
+1. Linear Elastic 
+2. St. Venant Kirchhoff 
+3. Nearly-incompressible Neo-Hookean
+
+As described in detail below; while the [**redbKIT**](https://github.com/redbKIT/redbKIT) toolkit should be the primary reference point for the interested reader, it is my belief that the condensed solvers (as presented here in their simplified intermediary forms) hold their own unique value to the wider student/researcher community. In particular, for the purposes of streamlined learning, efficient tool adoption, and additional/alternative technique development. This was most certainly my case where the ability to quickly validate (/experiment with) the domain solvers themselves - when treated independently - made integrating (/debugging/maintaining/adding to) them into a [partitioned fluid-structure interaction framwork](https://github.com/JTGonzo/Partitioned_FSI) significantly easier. 
 
 ## Download, Installation and Running
 -------
 
 For detailed configuartion, installion and operation instructions, in particular for the redbKIT based solvers, please follow the steps contained in the brief [INSTALL.md](INSTALL.md) file provided.
 
-## Solver Details 
-<ins>***CFEI Solver***</ins><br>
-The "Combined Field and Explicit Interface" scheme was developed at the [National University of Singapore](https://cde.nus.edu.sg/me/) by the graduate students of my superviosor [Dr. Rajeev Jaiman](https://scholar.google.com/citations?user=iofAU68AAAAJ&hl=en&oi=ao). This technique uses a finite-element spatial discretization for both the fluid and structural equations. It uses stabilized streamline-upwind Petrov-Galerkin (SUPG) P<sub>m</sub>/P<sub>m-1</sub>/P<sub>m</sub> iso-parametric finite elements to satisfy the inf–sup condition. Temporal discretization is achieved via the second-order bacward difference formula in each domain.  
-
-Further reading on this approach can be found in 
->[**[RKJ16] J. Liu, R. Jaiman, P. Gurugubelli. A stable second-order scheme for fluid–structure interaction with strong added-mass effects **, Journal of Computational Physics, 2014.](https://doi.org/10.1016/j.jcp.2014.04.020)
-
-<ins>***redbKIT Solver***</ins><br>
-The redbKIT-based solvers presented above are bare-bones deconstructions (/simplification) of the original [toolkit](https://github.com/redbKIT/redbKIT). At face value they are exclusively the intellectual property of the original repository with a few original lines of functional code included for initialization, data output, and operational purposes. 
-
-These solvers use a finite-element spatial discretization for both the fluid and structural equations. In the above  solvers specifically (as opposed to the original toolkit), we exclusively use higher-order P<sub>2</sub> finite elements for the structural equations and stable Taylor-Hood P<sub>2</sub>/P<sub>1</sub> mixed finite elements for the fluid equations. A second-order backward difference scheme is adopted for the temporal discretization of the fluid domian whilst the generalized-&alpha; method is used for the structural domian. 
-
-As described in detail below; while the [**redbKIT**](https://github.com/redbKIT/redbKIT) toolkit should be the primary reference point for the interested reader, it is my belief that the condensed monolithic solvers (as presented here in their simplified intermediary forms) hold their own unique value to the wider student/researcher community. In particular, for the purposes of streamlined learning, efficient tool adoption, and additional/alternative technique development. 
-
 ## Further Clarifying Details
 For absolute clarity, the [**redbKIT**](https://github.com/redbKIT/redbKIT) toolkit by itself is an ***AMAZING*** resource for (young) academics seeking an education on the finite element method and reduced-order modelling. As such I **strongly** recommend the reader fork that repository and work through redbKIT's numerous well crafted example problems. *I personally give this resource the lion's share of credit in helping me complete my graduate studies.*
 
 Having said that, however, as is true for (almost) all **well developed / robust** software packages used to tackle complex problems in computational physics; its sophistication tends to be its own undoing for those novice students beginning their journey in the simulation sciences or those young numerical methods researchers who are focusing on a niche element of the problem/framework/technique and just want the machinery around the issue to be (first) working and (secondly) easily digestible for peace of mind, debugging, development etc. purposes. As such, the codes provided above seek to shallow the learning curve and expedite the toolkit's adoption/integration. 
 
-In the case of my graduate studies, for example, having simplified the redbKIT solvers into just those most essential numerical elements needed for running a reasonably complex fluid-structure interaction simulation, I was **then** able to more easily/quickly deconstruct the monolthic system of equations into a partitioned framework for solving FSI problem. From this point I built out all the supporting tools needed to perform [partitioned simulations](https://github.com/JTGonzo/Partitioned_FSI) (interface mapping, iterative acceleration etc.) and only then was I was able to **BEGIN** my research into ["*stabilization strategies for low mass-ratio partitioned FSI simulations*"](https://jtgonzo.github.io/).  
-
+In the case of my graduate studies, for example, having simplified the redbKIT solvers into just those most essential numerical elements needed to 
+perform reasonably complex CFD and CSM simulations, I was able to more seamless add (/test/troubleshoot) my own features to the already established physical solvers. In particular, the integration of conservative Dirchlet and Neummann boundary conditions into the fluid and structural solvers, respectively. These additions, as well as all associated interfacial data mapping and stabalization techniques also necessary, then facilitated the development of my own [partitioned numerical framework](https://github.com/JTGonzo/Partitioned_FSI) which I then used to investigate ["*coupling  instabilities in low mass-ratio partitioned FSI simulations*"](https://jtgonzo.github.io/).  
 
 ## redbKIT : a MATLAB(R) library for reduced-order modeling of parametrized PDEs
 

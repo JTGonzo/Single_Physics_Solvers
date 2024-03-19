@@ -12,9 +12,9 @@ fem      =  'P2';
 
 t      = [];
 param = [];
-vtk_filename = 'Figures/Sol_'; % []; % 
+vtk_filename = 'Figures/Flap_'; % []; % 
 sol_history = true;
-data_file = 'datafile';
+data_file = 'CSM_data';
 
 %% Read problem parameters and BCs from data_file
 eval(data_file);

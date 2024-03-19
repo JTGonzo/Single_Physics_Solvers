@@ -14,7 +14,7 @@ For the basic installation, you need:<br>
 Basic Installation
 ------------------
 
-Open Matlab and navigate to the root folder of the downloaded solver that you will be using (e.g. **2D_FSI_implicit_nonlinear**). Then type 
+Open Matlab and navigate to the root folder of the downloaded solver that you will be using (e.g. **3D_structural_mechanics**). Then type 
 
 >> make
 
@@ -26,27 +26,29 @@ Running the Example Provided
 
 With Matlab opened; in the same folder as the *make.m* file ran previously, type 
 
->> main_FSI
+>> main_CFD
 
-doing this begins the example simulation and creates a "Figures" folder where the simulation configuration is output to periodically as a series of *.vtk files and a "Results" folder where the resultant aerodynamic forces integrated over the defined FSI interface is output after each time step. 
+OR 
+
+>> main_CSM
+
+as determined by the solver type. Doing this begins the example simulation and creates a "Figures" folder where the simulation configuration is output to periodically as a series of *.vtk files. IN the casse of the CFD solver a "Results" folder is also created where the resultant aerodynamic forces integrated over the defined FSI interface is output after each time step. 
 
 Running your own Simulation
 ------------------
 <ins>***Mesh and .MAT file generation***</ins><br>
-See this brief tutorial on how to set up the **.mat** files needed to perform your own simulations. These .mat files define the geometric/spatial properties of the problem you intend to investigate. Pay special attention on how to define and identify the boundary and interface surfaces for each of the respective domains. 
+See this brief tutorial on how to set up the **.mat** files needed to perform your own simulations. These .mat files define the geometric/spatial properties of the problem you intend to investigate. Pay special attention on how to define and identify the boundary and interface surfaces. 
 
-<ins>***Editting main_FSI.m***</ins><br>
+<ins>***Editting main_CFD.m or main_CSM.m ***</ins><br>
 The only adjustments that are needed in this file to run your own simulations are 
 
-*line 10 :* load('flap_S.mat')
+*line 8 :* load('beam.mat')
 
-*line 17 :* load('flap_S.mat')
+*line 15 :* vtk_filename = 'Figures/Flap_';
 
-*line 29 :* vtk_filename = 'Figures/Flap_'; 
+These lines are where you indicate the names you chose for the domain specific .mat files that you will be importing to the solver as well as the prefix string that you intend to assigned to your output data.  
 
-These lines are where you indicate the names you chose for the domain specific .mat files that you will be importing as well as the prefix string that you intend to assigned to your output data.  
-
-<ins>***Editting NS_data.m and CSM_data.m***</ins><br>
+<ins>***Editting CFD_data.m or CSM_data.m***</ins><br>
 These two files are the primary locations where you define all the domain specific parameters needed for you unqiue problem. Parameters that you are able to set include: 
 
 1. material properties 
@@ -59,7 +61,7 @@ These two files are the primary locations where you define all the domain specif
 
 
 ===========================================
-Instructions - CFEI-based solvers 
+Instructions - multi=phase CFD solver 
 ===========================================
 
 Pre-requisites
@@ -71,9 +73,9 @@ For the basic installation, you just need a reasonably recent version of Matlab 
 Running the Example Provided 
 ------------------
 
-Open Matlab and navigate to the root folder of the downloaded solver that you will be using (e.g. **2D_Combined_Field_Explicit_Interface**). Then type 
+Open Matlab and navigate to the root folder of the downloaded solver that you will be using (e.g. **3D_compressible_NS**). Then type 
 
->> main_FSI
+>> main_CFD
 
-doing this begins the example simulation provided
+doing this begins the example simulation provided. 
 
