@@ -26,15 +26,14 @@ As described in detail below; while the [**redbKIT**](https://github.com/redbKIT
 ## Download, Installation and Running
 -------
 
-For detailed configuartion, installion and operation instructions, in particular for the redbKIT based solvers, please follow the steps contained in the brief [INSTALL.md](INSTALL.md) file provided.
+For detailed configuartion, installation and operation instructions, in particular for the redbKIT based solvers, please follow the steps contained in the brief [INSTALL.md](INSTALL.md) file provided.
 
 ## Further Clarifying Details
 For absolute clarity, the [**redbKIT**](https://github.com/redbKIT/redbKIT) toolkit by itself is an ***AMAZING*** resource for (young) academics seeking an education on the finite element method and reduced-order modelling. As such I **strongly** recommend the reader fork that repository and work through redbKIT's numerous well crafted example problems. *I personally give this resource the lion's share of credit in helping me complete my graduate studies.*
 
 Having said that, however, as is true for (almost) all **well developed / robust** software packages used to tackle complex problems in computational physics; its sophistication tends to be its own undoing for those novice students beginning their journey in the simulation sciences or those young numerical methods researchers who are focusing on a niche element of the problem/framework/technique and just want the machinery around the issue to be (first) working and (secondly) easily digestible for peace of mind, debugging, development etc. purposes. As such, the codes provided above seek to shallow the learning curve and expedite the toolkit's adoption/integration. 
 
-In the case of my graduate studies, for example, having simplified the redbKIT solvers into just those most essential numerical elements needed to 
-perform reasonably complex CFD and CSM simulations, I was able to more seamless add (/test/troubleshoot) my own features to the already established physical solvers. In particular, the integration of conservative Dirchlet and Neummann interfacial boundary conditions into the fluid and structural solvers, respectively. These additions, as well as all associated interfacial data mapping and stabalization techniques also necessary, then allowed me to developm of my own [partitioned numerical framework](https://github.com/JTGonzo/Partitioned_FSI) which I used to investigate ["*coupling  instability in low mass-ratio partitioned FSI simulations*"](https://jtgonzo.github.io/).  
+In the case of my graduate studies, for example, having simplified the redbKIT solvers into just those most essential numerical elements needed to perform reasonably complex CFD and CSM simulations, I was able to more seamless add (/test/troubleshoot) my own features to the already established physical solvers. In particular, the integration of conservative Dirchlet and Neummann interfacial boundary conditions into the fluid and structural solvers, respectively. These additions, as well as all associated interfacial data mapping and stabalization techniques also necessary, then allowed me to developm of my own [partitioned numerical framework](https://github.com/JTGonzo/Partitioned_FSI) which I used to investigate ["*coupling  instability in low mass-ratio partitioned FSI simulations*"](https://jtgonzo.github.io/).  
 
 ## redbKIT : a MATLAB(R) library for reduced-order modeling of parametrized PDEs
 
